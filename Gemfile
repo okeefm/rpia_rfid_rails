@@ -16,9 +16,18 @@ gem 'simple_form'
 gem 'therubyracer', :platform=>:ruby
 gem 'unicorn'
 gem 'unicorn-rails'
+gem 'rails_admin'
+gem 'paper_trail', '~> 3.0.1'
+gem 'cancancan'
+gem 'role_model'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :mri_21, :rbx]
   gem 'quiet_assets'
   gem 'rails_layout'
+end
+
+group :development, :test do
+  gem 'rspec-rails'
 end
