@@ -25,6 +25,25 @@ class UsersController < ApplicationController
     end
   end
   
+  def authenticate
+    respond_to do |format|
+      @user = User.where(facility_code: params[:facility_code], id_code: params[:id_code])
+      if @user.count == 1
+        user = @user[0]
+        if user.has_any_role? :admin, :oboard, :crew_chief, :driver
+          format.html{ render html: "authorized" }
+          format.json{ render json: "authorized" }
+        else
+          format.html{ render html: "forbidden", status: :forbidden }
+          format.json{ render json: "forbidden", status: :forbidden }
+        end
+      else
+        format.html{ render html: "forbidden", status: :forbidden }
+        format.json{ render json: "forbidden", status: :forbidden }
+      end
+    end
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
