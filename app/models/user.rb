@@ -6,5 +6,7 @@ class User < ActiveRecord::Base
          
   include RoleModel
   roles_attribute :roles_mask
-  roles :admin
+  roles :admin, :officer, :crew_chief, :driver, :attendant
+  
+  has_paper_trail
 end
