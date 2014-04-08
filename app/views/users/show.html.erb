@@ -1,2 +1,10 @@
 <h3>User</h3>
 <p>Email: <%= @user.email if @user.email %></p>
+
+<% if @user.facility_code %>
+<p>Card facility code: <%= @user.facility_code %>, id code: <%= @user.id_code %></p>
+<% end %>
+
+<% if current_user.has_role? :admin %>
+  <p><%= link_to "Edit card details", edit_card_path(@user) %> </p>
+<% end %>

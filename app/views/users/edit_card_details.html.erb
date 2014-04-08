@@ -1,0 +1,18 @@
+<h1>Editing User card details</h1>
+
+<%= simple_form_for @user, :url => update_card_path, :method => :post do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :facility_code %>
+    <%= f.input :id_code %>
+    
+  </div>
+  <br />
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Show', @user %> |
+<%= link_to 'Back', users_path %>
